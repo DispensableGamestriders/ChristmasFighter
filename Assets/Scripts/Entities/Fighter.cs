@@ -8,6 +8,7 @@ public class Fighter : MonoBehaviour {
 
 	public float health = MAX_HEALTH;
 	public string fighterName;
+	public float movementSpeed = 5.0f;
 
 	public PlayerType player;
 
@@ -19,21 +20,20 @@ public class Fighter : MonoBehaviour {
 	}
 
 	void UpdateHumanInput() {
-		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			Debug.Log( "Right Arrow key was pressed." );
-		} else {
-		
-		}
-		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-			Debug.Log( "Left Arrow key was pressed." );
-		} else {
+		if (Input.GetKey(KeyCode.RightArrow)) {
+			transform.position += Vector3.right * Time.deltaTime * movementSpeed;
+		} 
 
+		if(Input.GetKey(KeyCode.LeftArrow)) {
+			transform.position += Vector3.left * Time.deltaTime * movementSpeed;
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
-		UpdateHumanInput();
+		if (player == PlayerType.HUMAN) { 
+			UpdateHumanInput ();
+		}
 	}
 
 	public float healthPercent {
