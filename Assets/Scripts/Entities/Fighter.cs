@@ -27,6 +27,10 @@ public class Fighter : MonoBehaviour {
 		if(Input.GetKey(KeyCode.LeftArrow)) {
 			transform.position += Vector3.left * Time.deltaTime * movementSpeed;
 		}
+
+		if(Input.GetKey(KeyCode.UpArrow)){
+			transform.position += Vector3.up * Time.deltaTime * movementSpeed;
+		}
 	}
 
 	// Update is called once per frame
